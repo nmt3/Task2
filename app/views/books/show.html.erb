@@ -1,13 +1,13 @@
-<p id= "norice">
-  <strong>Title</strong>
-  <%= notice %>
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
 </p>
 
-<p id="notice">
-  <strong>Body</strong>
-  <%= notice %>
+<p>
+  <strong>Body:</strong>
+  <%= @book.body %>
 </p>
 
-<a class="edit" href="/books/<%= notice %>/edit">Edit</a>
-" | "
+<a class="edit" href="/books/<%=  %>/edit">Edit</a>
+|
 <a class="back" href="/books">Back</a>
