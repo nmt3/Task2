@@ -1,11 +1,17 @@
 <h1>Editing Book</h1>
-<%= faem_with model: @book do |if| %>
+<%= form_with model: @book, url: edit_book_path(@book.id),method: :patch do |f| %>
 
 <h4>title</h4>
-<%= xt
+<%= f.text_field :title %>
 
 <h4>body</h4>
+<%= f.text_area :body %>
 
 
-<span class=""
-<span class="update">update books</span>
+<%= f.submit 'Update Books' %>
+
+<%= link_to 'Show', book_path(@book) %>
+|
+<%= link_to 'Back', books_path %>
+
+<% end %>
