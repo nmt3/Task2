@@ -17,8 +17,8 @@
       <td><%= book.body %></td>
       <td><%= link_to 'Show', book %></td>
       <td><%= link_to 'Edit', edit_book_path(book) %></td>
-      <td><%= link_to 'Destroy', book, method: :delete, data: {cofirm: 'Are you sure?' } %> </td>
-    </tr>
+      <td><%= link_to 'Destroy', books_path, method: :delete, data: {cofirm: 'Are you sure?' } %> </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
