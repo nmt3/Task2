@@ -1,4 +1,4 @@
-<%= flash[:notice] %>
+<p id="notice"><%= flash[:notice] %></p>
 <h1>Books</h1>
 
 <table>
@@ -35,15 +35,14 @@
 
   <%= form_with model: Book.new do |f| %>
   <div class=field>
-    <lavel for="book_itle">Title</lavel>
+    <label for="book_itle">Title</label>
+    <%= f.text_field :title %>
   </div>
-  <%= f.text_field :title %>
 
-
-  <div class="field">Body
-    <lavel for="book_body">Body</lavel>
+  <div class="field">
+    <label for="book_body">Body</label>
+    <%= f.text_area :body %>
   </div>
-  <%= f.text_area :body %>
 
   <div class="actions">
     <%= f.submit'Create Book' %>
