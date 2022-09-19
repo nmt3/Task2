@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all.order("id DESC").page(1).per(8)
+    @books = Book.all.order("id DESC").reverse_order.page(1).per(8)
     @book = Book.new
   end
 
@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     flash[:notice]="Book was successfully created."
       redirect_to book_path(@book.id)
     else
-      @books = Book.all.order("id DESC")
+      @books = Book.all.order("id DESC").reverse_order
       render :index
     end
   end
@@ -24,11 +24,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    if book.save
-      flash[:notice]="Book was successfully created."
-    redirect_to book_path(params[:id])
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice]="Book was successfully updated."
+      redirect_to book_path(params[:id])
+    else
+      render :edit
     end
   end
 
@@ -36,7 +37,7 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     book.destroy
     if book.delete
-      flash[:notice]="Book was successfully created."
+      flash[:notice]="Book was successfully destroyed."
       redirect_to '/books'
     end
   end
